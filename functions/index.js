@@ -39,6 +39,27 @@ let indexesChecked = false;
 
 export async function onRequest(context) {
   const { request, env } = context;
+  // 自动确保索引存在（每个 Worker 实例只执行一次）
+  if (!indexesChecked) {
+    try {
+      await env.NAV_DB.batch([
+        env.NAV_DB.prepare("CREATE INDEX IF NOT EXISTS idx_sites_catelog_id ON sites(catelog_id)"),
+        env.NAV_DB.prepare("CREATE INDEX IF NOT EXISTS idx_sites_sort_order ON sites(sort_order)")
+      ]);
+      
+      // 检查并添加 is_private 字段
+      try {
+          await env.NAV_DB.prepare("SELECT is_private FROM sites LIMIT 1").first();
+      } catch (e) {
+          await env.NAV_DB.prepare("ALTER TABLE sites ADD COLUMN is_private INTEGER DEFAULT 0").run();
+      }
+
+      indexesChecked = true;
+    } catch (e) {
+      console.error('Failed to ensure indexes or columns:', e);
+    }
+  }
+
   const url = new URL(request.url);
   const catalog = url.searchParams.get('catalog');
 
