@@ -520,11 +520,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const sitesGrid = document.getElementById('sitesGrid');
       if (!sitesGrid) return;
       
-      // 改用 CSS 变量检测毛玻璃效果是否开启
-      const computedStyle = getComputedStyle(document.documentElement);
-      const frostedBlurVal = computedStyle.getPropertyValue('--frosted-glass-blur').trim();
-      const isFrostedEnabled = frostedBlurVal !== '';
-      
       // 使用全局配置获取布局设置，避免依赖 DOM 推断
       const config = window.IORI_LAYOUT_CONFIG || {};
       const isFiveCols = config.gridCols === '5';
@@ -533,6 +528,13 @@ document.addEventListener('DOMContentLoaded', function() {
       const hideLinks = config.hideLinks === true;
       const hideCategory = config.hideCategory === true;
       const cardStyle = config.cardStyle || 'style1';
+      
+      // 优先从配置获取毛玻璃开关状态，CSS 变量作为回退
+      const computedStyle = getComputedStyle(document.documentElement);
+      const frostedBlurVal = computedStyle.getPropertyValue('--frosted-glass-blur').trim();
+      const isFrostedEnabled = config.enableFrostedGlass !== undefined 
+          ? config.enableFrostedGlass 
+          : (frostedBlurVal !== '');
       
       sitesGrid.innerHTML = '';
       

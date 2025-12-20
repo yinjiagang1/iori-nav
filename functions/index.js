@@ -749,10 +749,11 @@ export async function onRequest(context) {
   }
   
   // Inject Card CSS Variables
-  const cardCssVars = `<style>:root { --card-padding: 1.25rem; --card-radius: ${layoutCardBorderRadius}px; }</style>`;
+  const cardCssVars = `<style>:root { --card-padding: 1.25rem; --card-radius: ${layoutCardBorderRadius}px; --frosted-glass-blur: ${layoutFrostedGlassIntensity}px; }</style>`;
   html = html.replace('</head>', `${cardCssVars}</head>`);
 
   // 自动注入字体资源
+  // ... (existing code omitted for brevity but I should match context)
   const usedFonts = new Set([
       homeTitleFont, homeSubtitleFont, homeStatsFont, homeHitokotoFont,
       cardTitleFont, cardDescFont
@@ -799,7 +800,8 @@ export async function onRequest(context) {
         hideLinks: ${layoutHideLinks},
         hideCategory: ${layoutHideCategory},
         gridCols: "${layoutGridCols}",
-        cardStyle: "${layoutCardStyle}"
+        cardStyle: "${layoutCardStyle}",
+        enableFrostedGlass: ${layoutEnableFrostedGlass}
       };
     </script>
   `;
