@@ -1,3 +1,4 @@
+
 async function validateAdminSession(request, env) {
   const cookie = request.headers.get('Cookie');
   if (!cookie) return { authenticated: false };
@@ -17,7 +18,7 @@ async function destroyAdminSession(env, token) {
 
 function buildSessionCookie(token, options = {}) {
   const maxAge = options.maxAge !== undefined ? options.maxAge : 86400;
-  return `admin_session=${token}; Max-Age=${maxAge}; Path=/; HttpOnly; Secure; SameSite=Strict`;
+  return `admin_session=${token}; Max-Age=${maxAge}; Path=/; HttpOnly; Secure; SameSite=Lax`;
 }
 
 export async function onRequest(context) {
