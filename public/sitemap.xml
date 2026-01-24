@@ -44,7 +44,7 @@
 </url>
 <url>
   <loc>https://nav.lioil.nn.kg/?catalog=%E4%BB%A3%E7%90%86</loc>
-  <lastmod>2026-01-24T16:22:22+00:00</lastmod>
+  <lastmod>2026-01-24T16:22:22+00:00</lastmod>  
   <priority>0.80</priority>
 </url>
 <url>
@@ -59,7 +59,7 @@
 </url>
 <url>
   <loc>https://nav.lioil.nn.kg/?catalog=%E5%85%8D%E8%B4%B9%E7%9F%AD%E4%BF%A1</loc>
-  <lastmod>2026-01-24T16:22:22+00:00</lastmod>
+  <lastmod>2026-01-24T16:22:22+00:00</lastmod>  
   <priority>0.80</priority>
 </url>
 <url>
@@ -69,19 +69,15 @@
 </url>
 <url>
   <loc>https://nav.lioil.nn.kg/?catalog=%E9%82%AE%E4%BB%B6%26%E5%9F%9F%E5%90%8D</loc>
-  <lastmod>2026-01-24T16:22:22+00:00</lastmod>
+  <lastmod>2026-01-24T16:22:22+00:00</lastmod>  
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://nav.lioil.nn.kg/?catalog=Dev</loc>
-  <lastmod>2026-01-24T16:22:22+00:00</lastmod>
+  <lastmod>2026-01-24T16:22:22+00:00</lastmod>  
   <priority>0.80</priority>
 </url>
-<url>
-  <loc>https://nav.lioil.nn.kg/admin/login</loc>
-  <lastmod>2026-01-24T16:22:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
+
 
 
 </urlset>
